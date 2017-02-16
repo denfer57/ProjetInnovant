@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 16 Février 2017 à 11:03
+-- Généré le :  Jeu 16 Février 2017 à 11:26
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -85,9 +85,9 @@ CREATE TABLE IF NOT EXISTS `events` (
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `picture` varchar(200) NOT NULL,
-  `hot` int(10) NOT NULL,
-  `check` int(10) NOT NULL,
-  `omw` int(10) NOT NULL,
+  `hot` int(10) NOT NULL DEFAULT '0',
+  `check` int(10) NOT NULL DEFAULT '0',
+  `omw` int(10) NOT NULL DEFAULT '0',
   `coord` varchar(20) NOT NULL,
   PRIMARY KEY (`idEvents`,`idUsers`,`idCategories`,`idCities`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -125,7 +125,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pseudo` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
   `picture` varchar(200) NOT NULL,
-  `points` int(10) NOT NULL,
+  `points` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idUsers`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
