@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 16 Février 2017 à 11:26
+-- Généré le :  Jeu 02 Mars 2017 à 08:42
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -65,10 +65,11 @@ CREATE TABLE IF NOT EXISTS `cities` (
 CREATE TABLE IF NOT EXISTS `comments` (
   `idComments` int(11) NOT NULL AUTO_INCREMENT,
   `idUsers` int(11) NOT NULL,
+  `idEvents` int(11) NOT NULL,
   `text` varchar(140) NOT NULL,
   `picture` varchar(200) NOT NULL,
   `video` varchar(200) NOT NULL,
-  PRIMARY KEY (`idComments`,`idUsers`)
+  PRIMARY KEY (`idComments`,`idUsers`,`idEvents`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -85,9 +86,6 @@ CREATE TABLE IF NOT EXISTS `events` (
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `picture` varchar(200) NOT NULL,
-  `hot` int(10) NOT NULL DEFAULT '0',
-  `check` int(10) NOT NULL DEFAULT '0',
-  `omw` int(10) NOT NULL DEFAULT '0',
   `coord` varchar(20) NOT NULL,
   PRIMARY KEY (`idEvents`,`idUsers`,`idCategories`,`idCities`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
@@ -96,8 +94,8 @@ CREATE TABLE IF NOT EXISTS `events` (
 -- Contenu de la table `events`
 --
 
-INSERT INTO `events` (`idEvents`, `idUsers`, `idCategories`, `idCities`, `name`, `address`, `picture`, `hot`, `check`, `omw`, `coord`) VALUES
-(1, 1, 1, 1, 'exemple', '13 rue Michel Ney', '', 0, 0, 0, '48.6972949,6.1690946');
+INSERT INTO `events` (`idEvents`, `idUsers`, `idCategories`, `idCities`, `name`, `address`, `picture`, `coord`) VALUES
+(1, 1, 1, 1, 'exemple', '13 rue Michel Ney', '', '48.6972949,6.1690946');
 
 -- --------------------------------------------------------
 
@@ -110,6 +108,21 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `text` varchar(140) NOT NULL,
   PRIMARY KEY (`idMessages`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `omw`
+--
+
+CREATE TABLE IF NOT EXISTS `omw` (
+  `idUsers` int(11) NOT NULL,
+  `idEvents` int(11) NOT NULL,
+  `omw` tinyint(1) NOT NULL,
+  `check` tinyint(4) NOT NULL,
+  `hot` int(11) NOT NULL,
+  PRIMARY KEY (`idUsers`,`idEvents`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -127,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `picture` varchar(200) NOT NULL,
   `points` int(10) NOT NULL DEFAULT '0',
   PRIMARY KEY (`idUsers`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `users`
