@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 02 Mars 2017 à 08:42
+-- Généré le :  Ven 17 Mars 2017 à 15:36
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -27,16 +27,16 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `categories` (
-  `idCategories` int(11) NOT NULL AUTO_INCREMENT,
+  `categorie_id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(30) NOT NULL,
-  PRIMARY KEY (`idCategories`)
+  PRIMARY KEY (`categorie_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Contenu de la table `categories`
 --
 
-INSERT INTO `categories` (`idCategories`, `name`) VALUES
+INSERT INTO `categories` (`categorie_id`, `name`) VALUES
 (1, 'festive'),
 (2, 'musicale'),
 (3, 'culturelle'),
@@ -51,9 +51,9 @@ INSERT INTO `categories` (`idCategories`, `name`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `cities` (
-  `idCities` int(11) NOT NULL AUTO_INCREMENT,
+  `citie_id` int(11) NOT NULL AUTO_INCREMENT,
   `localisation` varchar(100) NOT NULL,
-  PRIMARY KEY (`idCities`)
+  PRIMARY KEY (`citie_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -63,13 +63,13 @@ CREATE TABLE IF NOT EXISTS `cities` (
 --
 
 CREATE TABLE IF NOT EXISTS `comments` (
-  `idComments` int(11) NOT NULL AUTO_INCREMENT,
-  `idUsers` int(11) NOT NULL,
-  `idEvents` int(11) NOT NULL,
+  `comment_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `text` varchar(140) NOT NULL,
   `picture` varchar(200) NOT NULL,
   `video` varchar(200) NOT NULL,
-  PRIMARY KEY (`idComments`,`idUsers`,`idEvents`)
+  PRIMARY KEY (`comment_id`,`user_id`,`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -79,22 +79,22 @@ CREATE TABLE IF NOT EXISTS `comments` (
 --
 
 CREATE TABLE IF NOT EXISTS `events` (
-  `idEvents` int(11) NOT NULL AUTO_INCREMENT,
-  `idUsers` int(11) NOT NULL,
-  `idCategories` int(11) NOT NULL,
-  `idCities` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `categorie_id` int(11) NOT NULL,
+  `citie_id` int(11) NOT NULL,
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `picture` varchar(200) NOT NULL,
   `coord` varchar(20) NOT NULL,
-  PRIMARY KEY (`idEvents`,`idUsers`,`idCategories`,`idCities`)
+  PRIMARY KEY (`event_id`,`user_id`,`categorie_id`,`citie_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `events`
 --
 
-INSERT INTO `events` (`idEvents`, `idUsers`, `idCategories`, `idCities`, `name`, `address`, `picture`, `coord`) VALUES
+INSERT INTO `events` (`event_id`, `user_id`, `categorie_id`, `citie_id`, `name`, `address`, `picture`, `coord`) VALUES
 (1, 1, 1, 1, 'exemple', '13 rue Michel Ney', '', '48.6972949,6.1690946');
 
 -- --------------------------------------------------------
@@ -104,9 +104,9 @@ INSERT INTO `events` (`idEvents`, `idUsers`, `idCategories`, `idCities`, `name`,
 --
 
 CREATE TABLE IF NOT EXISTS `messages` (
-  `idMessages` int(11) NOT NULL AUTO_INCREMENT,
+  `message_id` int(11) NOT NULL AUTO_INCREMENT,
   `text` varchar(140) NOT NULL,
-  PRIMARY KEY (`idMessages`)
+  PRIMARY KEY (`message_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -116,12 +116,12 @@ CREATE TABLE IF NOT EXISTS `messages` (
 --
 
 CREATE TABLE IF NOT EXISTS `omw` (
-  `idUsers` int(11) NOT NULL,
-  `idEvents` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `event_id` int(11) NOT NULL,
   `omw` tinyint(1) NOT NULL,
   `check` tinyint(4) NOT NULL,
   `hot` int(11) NOT NULL,
-  PRIMARY KEY (`idUsers`,`idEvents`)
+  PRIMARY KEY (`user_id`,`event_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -131,23 +131,23 @@ CREATE TABLE IF NOT EXISTS `omw` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `idUsers` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  `firstname` varchar(30) NOT NULL,
-  `mail` varchar(100) NOT NULL,
-  `pseudo` varchar(30) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `email` varchar(100) NOT NULL,
+  `username` varchar(30) NOT NULL,
   `password` varchar(100) NOT NULL,
   `picture` varchar(200) NOT NULL,
+  `token` varchar(20) NOT NULL,
   `points` int(10) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`idUsers`)
+  `salt` varchar(50) NOT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
 --
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`idUsers`, `name`, `firstname`, `mail`, `pseudo`, `password`, `picture`, `points`) VALUES
-(1, 'ris', 'charles', 'ris.charles@gmail.com', 'ris', 'password', '', 0);
+INSERT INTO `users` (`id`, `email`, `username`, `password`, `picture`, `token`, `points`, `salt`) VALUES
+(1, 'ris.charles@gmail.com', 'ris', 'password', '', '', 0, '');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
