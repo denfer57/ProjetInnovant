@@ -14,21 +14,25 @@
 
 
 <ion-content padding>
-
+    <form ng-submit="submit()">
     <ion-list>
 
         <ion-item>
             <ion-label floating>Username</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" name="username" [(ngModel)]="data.username"></ion-input>
         </ion-item>
 
         <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="password"></ion-input>
+            <ion-input type="password" name="password" [(ngModel)]="data.password"></ion-input>
         </ion-item>
 
     </ion-list>
 
-    <button ion-button block>SIGN IN</button>
+    <button ion-button block type="submit" name="submit" (click)="submit()">SIGN IN</button>
+
+    </form>
+
+    <span id="rep1"></span>
 
 </ion-content>
