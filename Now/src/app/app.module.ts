@@ -5,7 +5,7 @@ import {HomePage} from '../pages/home/home';
 import {SignInPage} from '../pages/sign-in/sign-in';
 import {SignUpPage} from '../pages/sign-up/sign-up';
 import {EventsPage} from "../pages/events/events";
-
+import {MapPage} from "../pages/map/map";
 
 @NgModule({
     declarations: [
@@ -13,7 +13,8 @@ import {EventsPage} from "../pages/events/events";
         HomePage,
         SignInPage,
         SignUpPage,
-        EventsPage
+        EventsPage,
+        MapPage
     ],
     imports: [
         IonicModule.forRoot(MyApp)
@@ -24,7 +25,8 @@ import {EventsPage} from "../pages/events/events";
         HomePage,
         SignInPage,
         SignUpPage,
-        EventsPage
+        EventsPage,
+        MapPage
     ],
     providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
 })
