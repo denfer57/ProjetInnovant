@@ -13,34 +13,34 @@
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color: #303030">
 
     <form ng-submit="submit()">
 
-    <ion-list>
+        <ion-list>
 
-        <ion-item>
-            <ion-label floating>Email</ion-label>
-            <ion-input type="mail" name="email" [(ngModel)]="data.email"></ion-input>
-        </ion-item>
+            <ion-item style="background-color: #303030">
+                <ion-label floating>Email</ion-label>
+                <ion-input type="mail" name="email" [(ngModel)]="data.email"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label floating>Username</ion-label>
-            <ion-input type="text" name="username" [(ngModel)]="data.username"></ion-input>
-        </ion-item>
+            <ion-item style="background-color: #303030">
+                <ion-label floating>Username</ion-label>
+                <ion-input type="text" name="username" [(ngModel)]="data.username"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="password" name="password" [(ngModel)]="data.password"></ion-input>
-        </ion-item>
+            <ion-item style="background-color: #303030">
+                <ion-label floating>Password</ion-label>
+                <ion-input type="password" name="password" [(ngModel)]="data.password"></ion-input>
+            </ion-item>
 
-        <ion-item>
-            <ion-label floating>Password confirmation</ion-label>
-            <ion-input type="password" name="confirmpassword" [(ngModel)]="data.confirmpassword"></ion-input>
-        </ion-item>
+            <ion-item style="background-color: #303030">
+                <ion-label floating>Password confirmation</ion-label>
+                <ion-input type="password" name="confirmpassword" [(ngModel)]="data.confirmpassword"></ion-input>
+            </ion-item>
 
-    </ion-list>
-    <button ion-button block type="submit" name="submit" (click)="submit()">SIGN UP</button>
+        </ion-list>
+        <button ion-button block type="submit" name="submit" (click)="submit()">SIGN UP</button>
     </form>
 
     <span id="rep"></span>
