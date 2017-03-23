@@ -9,23 +9,28 @@ class UsersController extends BaseController{
       $registrationOK=true;
       $erreur="";
       if(!empty($this->params['username']) && !empty($this->params['password']) && !empty($this->params['email'])){
+
         $exist=User::forge()->where("username","=",$this->params['username'])->first();
         if(!empty($exist)){
-                $erreur ="Your username is already taken. <br>";
+                $erreur ="Your username is already taken. <BR>";
                 $registrationOK=false;
           }
+
+
           if(isset($this->params["password"])){
             if(strlen($this->params["password"])<8){
-                $erreur.="Your password is too short.<br>";
+                $erreur.="Your password is to short.<br>";
                 $registrationOK=false;
             }
         }
         if(isset($this->params["password"]) AND isset($this->params["confirmpassword"])){
             if($this->params["password"]!=$this->params["confirmpassword"]){
-                $erreur.="Your password & confirmation password are not the same.<br>";
+                $erreur.="Your passwords are not the same.<br>";
                 $registrationOK=false;
             }
         }
+
+
           if(isset($this->params["email"])){
             if(!strstr($this->params["email"],"@")){
                 $erreur.="Your email is not valid.<br>";
@@ -36,14 +41,16 @@ class UsersController extends BaseController{
                 $registrationOK=false;
             }
         }
+
       }else{
         $registrationOK=false;
-        $erreur="All fields are not completed. <br>";
+        $erreur="All fields are not completed. <BR>";
       }
+
         if ($registrationOK) {
           $salt = strval(rand(0, 9999999999999999));
           $pwd = hash('sha256', $this->params["password"].$salt);
-          $token = uniqid();
+          $token=uniqid();
           $u = User::build([
             'username' => $this->params["username"],
             'password' => $pwd,
@@ -53,14 +60,21 @@ class UsersController extends BaseController{
             ]);
           $u->save();
           echo json_encode(array('token'=>$token,'username'=>$this->params["username"],'email'=>$this->params["email"]));
+
         }else{
           echo json_encode(array('erreur'=>$erreur));
         }
-    }
+
+
+      }
+
+
+
     public function login(){
       if(!empty($this->params['username']) && !empty($this->params['password'])){
         //var_dump($this->params);
         $u = User::forge()->where("username", "=", $this->params['username'])->first();
+
         if(isset($u)){
           //echo $u->toJSON();
           $pwd = hash('sha256', $this->params["password"].$u->salt);

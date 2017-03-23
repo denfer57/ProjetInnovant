@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import {EventFormPage} from '../event-form/event-form';
 
 /*
   Generated class for the Events page.
@@ -12,7 +13,7 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'events.html'
 })
 export class EventsPage {
-
+  evtfPage = EventFormPage;
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {

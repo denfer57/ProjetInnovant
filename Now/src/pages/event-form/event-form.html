@@ -1,0 +1,76 @@
+<!--
+  Generated template for the EventForm page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>event_form</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+
+<form ng-submit="submit()">
+
+  <ion-list>
+
+    <ion-item>
+      <ion-label floating>Event Name</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+
+    <ion-item>
+      <ion-label>Choose a Category</ion-label>
+          <ion-option value="sport">Sport</ion-option>
+          <ion-option value="cultural">Cultural</ion-option>
+          <ion-option value="music">Music</ion-option>
+          <ion-option value="party">Party</ion-option>
+          <ion-option value="games">Games</ion-option>
+          <ion-option value="other">Other...</ion-option>
+    </ion-item>
+
+      <ion-item>
+        <ion-textarea placeholder="Enter a description"></ion-textarea>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>Event Adress</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+
+      <ion-item class="eventPicture">
+          <img ng-src="imagesrc" ng-click="uploadEventPic()"/>
+          <button class="button button-primary" ng-click="uploadEventPic()">Select your event picture</button>
+          <input type="file" accept="image/*" id="upload" />
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>Event Name</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+
+      <ion-item>
+        <ion-label floating>Event Adress</ion-label>
+        <ion-input type="text"></ion-input>
+      </ion-item>
+
+  </ion-list>
+
+  <button ion-button block type="submit" name="submit" (click)="submit()">Create the event</button>
+
+  <span id="rep"></span>
+
+  </form>
+
+</ion-content>

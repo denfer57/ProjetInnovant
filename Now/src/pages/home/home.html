@@ -1,6 +1,6 @@
-<ion-content no-bounce>
+<ion-content no-bounce style="background-color: #303030">
 
-    <ion-grid no-padding>
+    <ion-grid padding>
         <ion-row style="height: 80vh;">
             <ion-slides pager>
 
@@ -11,7 +11,7 @@
                 </ion-slide>
 
                 <ion-slide>
-                    <img src="img/pin.png" [navPush]="mapPage" style="width: 100px; height: 100px;">
+                    <img src="img/pin.png" style="width: 100px; height: 100px;">
                     <h1>Discover</h1>
                     <p col-8 offset-2>You can find out what happens next to you</p>
                 </ion-slide>
@@ -23,20 +23,44 @@
                 </ion-slide>
 
                 <ion-slide>
+                    <img src="img/route.png" style="width: 100px; height: 100px;">
+                    <h1>I Go</h1>
+                    <p col-8 offset-2>Indicate that you are going to event</p>
+                </ion-slide>
+
+                <ion-slide>
+                    <img src="img/success.png" style="width: 100px; height: 100px;">
+                    <h1>Checked</h1>
+                    <p col-8 offset-2>Confirm that the event really exist</p>
+                </ion-slide>
+
+                <ion-slide>
+                    <img src="img/error.png" style="width: 100px; height: 100px;">
+                    <h1>Ended</h1>
+                    <p col-8 offset-2>Or report that it no longer exists or never existed</p>
+                </ion-slide>
+
+                <ion-slide>
+                    <img src="img/plus.png" style="width: 100px; height: 100px;">
+                    <h1>Add</h1>
+                    <p col-8 offset-2>And you can also create your own events !</p>
+                </ion-slide>
+
+                <ion-slide>
                     <img src="img/user.png" style="width: 100px; height: 100px;">
                     <h1>Profile</h1>
-                    <p col-8 offset-2>Join us and create an account right Now !</p>
+                    <p col-8 offset-2>So join us and create an account right Now !</p>
                 </ion-slide>
 
             </ion-slides>
         </ion-row>
 
-        <ion-row style="height: 10vh;">
+        <ion-row>
             <ion-col>
-                <button [navPush]="siPage" ion-button color="light" large full>SIGN IN</button>
+                <button [navPush]="siPage" ion-button color="light" large block>SIGN IN</button>
             </ion-col>
             <ion-col>
-                <button [navPush]="suPage" ion-button large full>SIGN UP</button>
+                <button [navPush]="suPage" ion-button large block>SIGN UP</button>
             </ion-col>
         </ion-row>
 
