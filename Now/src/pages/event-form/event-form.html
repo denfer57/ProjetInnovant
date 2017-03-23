@@ -7,26 +7,26 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>event_form</ion-title>
+    <ion-title>Create your event</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content padding style="background-color: #303030">
 
 
 <form ng-submit="submit()">
 
   <ion-list>
 
-    <ion-item>
+    <ion-item style="background-color: #303030">
       <ion-label floating>Event Name</ion-label>
       <ion-input type="text"></ion-input>
     </ion-item>
 
 
-    <ion-item>
+    <ion-item style="background-color: #303030">
       <ion-label>Choose a Category</ion-label>
         <ion-select [(ngModel)]="data.select" name="select">
           <ion-option value="sport">Sport</ion-option>
@@ -38,14 +38,17 @@
         </ion-select>
     </ion-item>
 
-      <ion-item>
-        <ion-textarea placeholder="Enter a description"></ion-textarea>
+      <ion-item style="background-color: #303030">
+        <ion-textarea placeholder="Enter a description" color="grey"></ion-textarea>
       </ion-item>
 
-      <ion-item class="eventPicture">
-          <input type="file" accept="image/*" id="upload"/>
-          <label for="upload" class="eventPic">Select your picture</label>
+      <ion-item class="eventPicture" style="background-color: #303030">
+          <label for="upload" class="eventPic">Select your picture :</label>
       </ion-item>
+      <ion-item style="background-color: #303030">
+        <input type="file" accept="image/*" id="upload"/>
+      </ion-item>
+
 
 
   </ion-list>
