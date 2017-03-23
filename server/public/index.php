@@ -40,17 +40,6 @@ $app->group('/api', function() use($app){//HOME PAGE
 		});
 
 	});
-	$app->group('/events', function() use ($app){
-		$app->post('/create', function(){
-			(new App\Controllers\EventsController())->create();
-		});
-		$app->post('/delete',function(){
-			(new App\Controllers\EventsController())->delete();
-		});
-		$app->post('/update',function(){
-			(new App\Controllers\EventsController())->update();
-		});
-	});
 });
 
 try{
