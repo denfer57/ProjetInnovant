@@ -28,42 +28,25 @@
 
     <ion-item>
       <ion-label>Choose a Category</ion-label>
+        <ion-select [(ngModel)]="data.select" name="select">
           <ion-option value="sport">Sport</ion-option>
           <ion-option value="cultural">Cultural</ion-option>
           <ion-option value="music">Music</ion-option>
           <ion-option value="party">Party</ion-option>
           <ion-option value="games">Games</ion-option>
           <ion-option value="other">Other...</ion-option>
+        </ion-select>
     </ion-item>
 
       <ion-item>
         <ion-textarea placeholder="Enter a description"></ion-textarea>
       </ion-item>
 
-
-      <ion-item>
-        <ion-label floating>Event Adress</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-
-
       <ion-item class="eventPicture">
-          <img ng-src="imagesrc" ng-click="uploadEventPic()"/>
-          <button class="button button-primary" ng-click="uploadEventPic()">Select your event picture</button>
-          <input type="file" accept="image/*" id="upload" />
+          <input type="file" accept="image/*" id="upload"/>
+          <label for="upload" class="eventPic">Select your picture</label>
       </ion-item>
 
-
-      <ion-item>
-        <ion-label floating>Event Name</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
-
-
-      <ion-item>
-        <ion-label floating>Event Adress</ion-label>
-        <ion-input type="text"></ion-input>
-      </ion-item>
 
   </ion-list>
 

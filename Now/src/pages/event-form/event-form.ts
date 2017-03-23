@@ -12,8 +12,10 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'event-form.html'
 })
 export class EventFormPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+data:any;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.data={};
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventFormPage');
