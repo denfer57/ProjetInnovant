@@ -12,13 +12,32 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'event-form.html'
 })
 export class EventFormPage {
-data:any;
+  data: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.data={};
+    this.data = {};
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventFormPage');
   }
 
+  public checkLength(len, text) {
+    var fieldLength = text.value.length;
+    if (fieldLength <= len) {
+      return true;
+    }
+    else {
+      var str = text.value;
+      str = str.substring(0, str.length - 1);
+      text.value = str;
+    }
+  }
 }
+
+
+
+
+
+
+
