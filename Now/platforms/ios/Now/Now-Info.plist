@@ -12,6 +12,10 @@
     <dict/>
     <key>CFBundleIcons~ipad</key>
     <dict/>
+    <key>NSCameraUsageDescription</key>
+    <string>ForEventPicture</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>ForEventPicture</string>
     <key>CFBundleIdentifier</key>
     <string>com.ionicframework.now250486</string>
     <key>CFBundleInfoDictionaryVersion</key>
