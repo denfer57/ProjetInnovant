@@ -14,16 +14,10 @@ import { ToastController } from 'ionic-angular';
   templateUrl: 'event-form.html'
 })
 export class EventFormPage {
-<<<<<<< HEAD
 	
 	data:any;
 	
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http, toastCtrl: ToastController) {
-=======
-  data: any;
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
->>>>>>> cfc97d8584aaa62fe743ff8735feb9637037e75c
     this.data = {};
   }
 
@@ -31,7 +25,6 @@ export class EventFormPage {
     console.log('ionViewDidLoad EventFormPage');
   }
 
-<<<<<<< HEAD
   public submit(){
 	var token = window.localStorage.getItem('token');
     var link = 'http://ionicserver:8888/api/events';
@@ -45,24 +38,4 @@ export class EventFormPage {
       }
     });
    }
-=======
-  public checkLength(len, text) {
-    var fieldLength = text.value.length;
-    if (fieldLength <= len) {
-      return true;
-    }
-    else {
-      var str = text.value;
-      str = str.substring(0, str.length - 1);
-      text.value = str;
-    }
-  }
->>>>>>> cfc97d8584aaa62fe743ff8735feb9637037e75c
 }
-
-
-
-
-
-
-
