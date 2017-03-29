@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 23 Mars 2017 à 08:52
+-- Généré le :  Mer 29 Mars 2017 à 11:37
 -- Version du serveur :  5.6.17
 -- Version de PHP :  5.5.12
 
@@ -19,30 +19,6 @@ SET time_zone = "+00:00";
 --
 -- Base de données :  `projet_innovant`
 --
-
--- --------------------------------------------------------
-
---
--- Structure de la table `categories`
---
-
-CREATE TABLE IF NOT EXISTS `categories` (
-  `categorie_id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(30) NOT NULL,
-  PRIMARY KEY (`categorie_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
-
---
--- Contenu de la table `categories`
---
-
-INSERT INTO `categories` (`categorie_id`, `name`) VALUES
-(1, 'festive'),
-(2, 'musicale'),
-(3, 'culturelle'),
-(4, 'sportive'),
-(5, 'ludique'),
-(6, 'commerciale');
 
 -- --------------------------------------------------------
 
@@ -36848,22 +36824,31 @@ CREATE TABLE IF NOT EXISTS `comments` (
 
 CREATE TABLE IF NOT EXISTS `events` (
   `event_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_id` int(11) NOT NULL,
-  `categorie_id` int(11) NOT NULL,
-  `citie_id` int(11) NOT NULL,
+  `user_id` varchar(50) NOT NULL,
+  `categorie` varchar(20) NOT NULL,
   `name` varchar(30) NOT NULL,
   `address` varchar(100) NOT NULL,
   `picture` varchar(200) NOT NULL,
   `description` varchar(140) NOT NULL,
-  PRIMARY KEY (`event_id`,`user_id`,`categorie_id`,`citie_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `citie_id` int(11) NOT NULL,
+  `longitude` double NOT NULL,
+  `latitude` double NOT NULL,
+  PRIMARY KEY (`event_id`,`user_id`,`categorie`),
+  KEY `categorie` (`categorie`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
 
 --
 -- Contenu de la table `events`
 --
 
-INSERT INTO `events` (`event_id`, `user_id`, `categorie_id`, `citie_id`, `name`, `address`, `picture`, `description`) VALUES
-(1, 1, 1, 1, 'exemple', '13 rue Michel Ney', '', 'Une soirée exceptionnelle, au programme : DJ Turfel sera dans la place');
+INSERT INTO `events` (`event_id`, `user_id`, `categorie`, `name`, `address`, `picture`, `description`, `citie_id`, `longitude`, `latitude`) VALUES
+(1, '1', 'Music', 'exemple', '13 rue Michel Ney', '', 'Une soirée exceptionnelle, au programme : DJ Turfel sera dans la place', 0, 6.1690946, 48.6972914),
+(28, '2', 'cultural', 'ugkj', '', '', 'agz', 0, 0, 0),
+(29, '2', 'cultural', 'gse', '', '', 'gbe', 0, 0, 0),
+(30, '2', 'cultural', 'gsefzeg', '', '', 'gbe', 0, 0, 0),
+(31, '7', 'party', 'okok', '', '', 'd&#39;accord', 0, 0, 0),
+(32, '7', 'sport', 'Test5', '', '', 'mdr', 0, 0, 0),
+(33, '1', 'music', 'tersqd', '', '', 'sg', 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -36880,10 +36865,10 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `omw`
+-- Structure de la table `score`
 --
 
-CREATE TABLE IF NOT EXISTS `omw` (
+CREATE TABLE IF NOT EXISTS `score` (
   `user_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   `omw` tinyint(1) NOT NULL,
@@ -36908,14 +36893,17 @@ CREATE TABLE IF NOT EXISTS `users` (
   `points` int(10) NOT NULL DEFAULT '0',
   `salt` varchar(50) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Contenu de la table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `username`, `password`, `picture`, `token`, `points`, `salt`) VALUES
-(1, 'ris.charles@gmail.com', 'ris', 'password', '', '', 0, '');
+(1, 'ris.charles@gmail.com', 'ris', 'password', '', '', 0, ''),
+(2, 'test@gmail.com', 'test', '18d412e0f55b634e112f18d3a8333c097f7841c6a96f24bab4b858c1bddcbbfd', '', '58d397057f571', 0, '994792148'),
+(3, 'Test@gmail.com', 'test3', 'a0c03d1827e4998ed51a6a6364dcbd2ca578c4969a428181d025643b121b02d8', '', '58d3aa54de690', 0, '475596016'),
+(7, 'test5@gmail.com', 'test5', '35ff5cb4c989437699b7c6efcbcc0b5ebd62829571486a9c7f776b89928b818d', '', '58db5e86aaac4', 0, '1077701030');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
