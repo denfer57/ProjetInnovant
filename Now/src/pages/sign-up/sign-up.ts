@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { ToastController } from 'ionic-angular';
-
+import { EventsPage } from '../events/events'
 /*
   Generated class for the SignUp page.
 
@@ -26,6 +26,7 @@ export class SignUpPage {
   }
 
   public submit(){
+    var _this = this;
     var link = 'http://ionicserver:8888/api/users';
     this.http.post(link, {username : this.data.username , password : this.data.password, confirmpassword : this.data.confirmpassword, email : this.data.email } ).subscribe(function (res){
       if(JSON.parse(res["_body"]).erreur==null){
@@ -33,12 +34,11 @@ export class SignUpPage {
         window.localStorage.setItem('username',JSON.parse(res["_body"]).username);
         window.localStorage.setItem('email',JSON.parse(res["_body"]).email);
         window.localStorage.setItem('token',JSON.parse(res["_body"]).token);
-        document.getElementById("rep").innerHTML=JSON.parse(res["_body"]).username+" has been registered";
-
+        //document.getElementById("rep").innerHTML=JSON.parse(res["_body"]).username+" has been registered";
+        _this.navCtrl.setRoot(EventsPage);
       }else{
         console.log(JSON.parse(res["_body"]).erreur);
         document.getElementById("rep").innerHTML=JSON.parse(res["_body"]).erreur;
-
       }
     });
   }

@@ -4,11 +4,13 @@
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 -->
+
+
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>Create your event</ion-title>
-  </ion-navbar>
+    <ion-navbar>
+        <ion-title>Create your event</ion-title>
+    </ion-navbar>
 
 </ion-header>
 
@@ -16,10 +18,11 @@
 <ion-content padding style="background-color: #303030">
 
 
-<form ng-submit="submit()">
+    <form ng-submit="submit()">
 
-  <ion-list>
+        <ion-list>
 
+<<<<<<< HEAD
     <ion-item style="background-color: #303030">
       <ion-label floating>Event Name</ion-label>
       <ion-input type="text" name="name" [(ngModel)]="data.name"></ion-input>
@@ -41,23 +44,52 @@
       <ion-item style="background-color: #303030">
         <ion-textarea placeholder="Enter a description" color="grey" name="description" [(ngModel)]="data.description"></ion-textarea>
       </ion-item>
-
-      <ion-item class="eventPicture" style="background-color: #303030">
-          <label for="upload" class="eventPic">Select your picture :</label>
-      </ion-item>
-      <ion-item style="background-color: #303030">
-        <input type="file" accept="image/*" id="upload"/>
-      </ion-item>
+=======
+            <ion-item style="background-color: #303030">
+                <ion-label floating>Event Name</ion-label>
+                <ion-input type="text"></ion-input>
+            </ion-item>
 
 
+            <ion-item style="background-color: #303030">
+                <ion-label>Category</ion-label>
+                <ion-select [(ngModel)]="data.select" name="select">
+                    <ion-option value="sport">Sport</ion-option>
+                    <ion-option value="cultural">Cultural</ion-option>
+                    <ion-option value="music">Music</ion-option>
+                    <ion-option value="party">Party</ion-option>
+                    <ion-option value="games">Games</ion-option>
+                    <ion-option value="other">Various</ion-option>
+                </ion-select>
+            </ion-item>
 
-  </ion-list>
+            <ion-item style="background-color: #303030">
+                <ion-textarea placeholder="Description" color="grey" id="desc" maxlength="140"></ion-textarea>
+            </ion-item>
+>>>>>>> cfc97d8584aaa62fe743ff8735feb9637037e75c
 
-  <button ion-button block type="submit" name="submit" (click)="submit()">Create the event</button>
+            <ion-item class="eventPicture" style="background-color: #303030">
+                <label for="upload" class="eventPic">Select your picture :</label>
+            </ion-item>
+            <ion-item style="background-color: #303030">
+                <input type="file" accept="image/*" id="upload"/>
+            </ion-item>
 
+
+        </ion-list>
+
+        <button ion-button block type="submit" name="submit" (click)="submit()">Create</button>
+
+        <span id="rep"></span>
+
+<<<<<<< HEAD
 
   </form>
   
   <span id="rep"></span>
+=======
+    </form>
+
+>>>>>>> cfc97d8584aaa62fe743ff8735feb9637037e75c
 
 </ion-content>
