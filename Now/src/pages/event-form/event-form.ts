@@ -38,4 +38,16 @@ export class EventFormPage {
       }
     });
    }
+   
+   public checkLength(len, text) {
+     var fieldLength = text.value.length;
+     if (fieldLength <= len) {
+       return true;
+     }
+     else {
+       var str = text.value;
+       str = str.substring(0, str.length - 1);
+       text.value = str;
+     }
+   }
 }
