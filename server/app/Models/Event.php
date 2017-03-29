@@ -2,7 +2,7 @@
 namespace App\Models;
 use Pragma\ORM\Model;
 
-class User extends Model{
+class Event extends Model{
   const TABLENAME='events';
 
   public function __construct(){

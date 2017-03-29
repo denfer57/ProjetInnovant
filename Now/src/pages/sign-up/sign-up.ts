@@ -28,7 +28,6 @@ export class SignUpPage {
   public submit(){
     var link = 'http://ionicserver:8888/api/users';
     this.http.post(link, {username : this.data.username , password : this.data.password, confirmpassword : this.data.confirmpassword, email : this.data.email } ).subscribe(function (res){
-
       if(JSON.parse(res["_body"]).erreur==null){
         console.log("pas d'erreur");
         window.localStorage.setItem('username',JSON.parse(res["_body"]).username);

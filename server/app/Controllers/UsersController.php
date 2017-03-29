@@ -81,9 +81,13 @@ class UsersController extends BaseController{
           if($u->password == $pwd){
             //echo json_encode("id valide");
             //echo $u->toJSON();
-            $token = uniqid();
+            //update le token dans la BDD
+            //$token = uniqid();
+            /*Remodifier le token BDD
+            $u->save();
+            */
             //echo json_encode($token);
-            echo json_encode(array('username'=>$this->params['username'],'token'=>$token));
+            echo json_encode(array('username'=>$this->params['username'],'token'=>$u->token));
             //echo array("username"=>$this->params['username'],"token"=>$token)->toJSON();
           }else{
             echo json_encode(array('erreur' =>'The login credentials are invalid.'));
@@ -97,5 +101,14 @@ class UsersController extends BaseController{
       echo json_encode(array('erreur' =>'All fields are not completed.'));
     }
   }
+
+  /*
+  public function delete(){
+    Récupérer le token ?
+    $token = "58dabf6db7c0e";
+    $u = User::forge()->where("token", "=", $token)->first();
+    $u->delete();
+  }
+  */
 }
 ?>

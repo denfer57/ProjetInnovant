@@ -27,12 +27,12 @@ export class SignInPage {
   public submit(){
     console.log("test");
     var link = 'http://ionicserver:8888/api/users/login';
-    this.http.post(link, {username : this.data.username , password : this.data.password, confirmpassword : this.data.confirmpassword, email : this.data.email } ).subscribe(function (res){
+    this.http.post(link, {username : this.data.username , password : this.data.password } ).subscribe(function (res){
 
       if(JSON.parse(res["_body"]).erreur==null){
         console.log("pas d'erreur");
-        window.localStorage.setItem('username',JSON.parse(res["_body"]).username);
-        window.localStorage.setItem('email',JSON.parse(res["_body"]).email);
+        //window.localStorage.setItem('username',JSON.parse(res["_body"]).username);
+        //window.localStorage.setItem('email',JSON.parse(res["_body"]).email);
         window.localStorage.setItem('token',JSON.parse(res["_body"]).token);
         document.getElementById("rep1").innerHTML=JSON.parse(res["_body"]).username+" is connected";
 
