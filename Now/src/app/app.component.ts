@@ -1,30 +1,30 @@
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
-import { StatusBar, Splashscreen } from 'ionic-native';
-
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
-import { EventsPage } from '../pages/events/events'
+import { TabsPage } from '../pages/tabs/tabs';
+
 
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
-  rootPage: any;
+  rootPage:any = TabsPage;
 
-  constructor(platform: Platform) {
+  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-      StatusBar.backgroundColorByHexString("#303030");
-      Splashscreen.hide();
-      StatusBar.styleLightContent();
-
+      statusBar.styleDefault();
+      statusBar.backgroundColorByHexString("#303030");
+      splashScreen.hide();
+      statusBar.styleLightContent();
       if(window.localStorage.getItem('token') == null) {
         this.rootPage = HomePage;
       }
       else {
-        this.rootPage = EventsPage;
+        this.rootPage = TabsPage;
       }
     });
   }

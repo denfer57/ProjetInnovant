@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { EventsPage } from '../events/events';
+import { TabsPage } from '../tabs/tabs';
 /*
   Generated class for the SignIn page.
 
@@ -36,7 +37,7 @@ export class SignInPage {
         //window.localStorage.setItem('email',JSON.parse(res["_body"]).email);
         window.localStorage.setItem('token',JSON.parse(res["_body"]).token);
         //document.getElementById("rep1").innerHTML=JSON.parse(res["_body"]).username+" is connected";
-        _this.navCtrl.setRoot(EventsPage);
+        _this.navCtrl.setRoot(TabsPage);
       }else{
         console.log(JSON.parse(res["_body"]).erreur);
         document.getElementById("rep1").innerHTML=JSON.parse(res["_body"]).erreur;

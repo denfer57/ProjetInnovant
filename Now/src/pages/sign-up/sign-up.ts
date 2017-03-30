@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import {Http} from '@angular/http';
 import { ToastController } from 'ionic-angular';
 import { EventsPage } from '../events/events'
+import { TabsPage } from '../tabs/tabs';
 /*
   Generated class for the SignUp page.
 
@@ -35,7 +36,7 @@ export class SignUpPage {
         window.localStorage.setItem('email',JSON.parse(res["_body"]).email);
         window.localStorage.setItem('token',JSON.parse(res["_body"]).token);
         //document.getElementById("rep").innerHTML=JSON.parse(res["_body"]).username+" has been registered";
-        _this.navCtrl.setRoot(EventsPage);
+        _this.navCtrl.setRoot(TabsPage);
       }else{
         console.log(JSON.parse(res["_body"]).erreur);
         document.getElementById("rep").innerHTML=JSON.parse(res["_body"]).erreur;

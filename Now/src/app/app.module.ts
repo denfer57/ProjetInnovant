@@ -1,37 +1,45 @@
-import {NgModule, ErrorHandler} from '@angular/core';
-import {IonicApp, IonicModule, IonicErrorHandler} from 'ionic-angular';
-import {MyApp} from './app.component';
-import {HomePage} from '../pages/home/home';
+import { NgModule, ErrorHandler } from '@angular/core';
+import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { TabsPage } from '../pages/tabs/tabs';
+import {EventsPage} from '../pages/events/events';
+import {EventFormPage} from '../pages/event-form/event-form';
 import {SignInPage} from '../pages/sign-in/sign-in';
 import {SignUpPage} from '../pages/sign-up/sign-up';
-import {EventsPage} from '../pages/events/events';
-import {MapPage} from '../pages/map/map';
-import {EventFormPage} from '../pages/event-form/event-form';
+//import {MapPage} from '../pages/map/map';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 @NgModule({
-    declarations: [
-        MyApp,
-        HomePage,
-        SignInPage,
-        SignUpPage,
-        EventsPage,
-        MapPage,
-        EventFormPage
-    ],
-    imports: [
-        IonicModule.forRoot(MyApp)
-    ],
-    bootstrap: [IonicApp],
-    entryComponents: [
-        MyApp,
-        HomePage,
-        SignInPage,
-        SignUpPage,
-        EventsPage,
-        MapPage,
-        EventFormPage
-    ],
-    providers: [{provide: ErrorHandler, useClass: IonicErrorHandler}]
+  declarations: [
+    MyApp,
+    HomePage,
+    //MapPage,
+    EventsPage,
+    SignInPage,
+    SignUpPage,
+    EventFormPage,
+    TabsPage
+  ],
+  imports: [
+    IonicModule.forRoot(MyApp)
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    //MapPage,
+    HomePage,
+    EventsPage,
+    SignInPage,
+    SignUpPage,
+    EventFormPage,
+    TabsPage
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler}
+  ]
 })
-export class AppModule {
-}
+export class AppModule {}
