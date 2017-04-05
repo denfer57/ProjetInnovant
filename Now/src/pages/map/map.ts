@@ -1,6 +1,6 @@
 import { Platform } from 'ionic-angular';
 import { Component } from '@angular/core'
-import { Geolocation } from 'ionic-native';
+import { Geolocation } from '@ionic-native/geolocation';
 
 declare var google;
 
@@ -14,8 +14,9 @@ export class MapPage {
     public map: any;
     public marker: any;
 
-    constructor(public platform: Platform) {
+    constructor(public platform: Platform, private geolocation: Geolocation) {
         this.platform = platform;
+        this.geolocation = geolocation;
         this.initializeMap();
     }
 
@@ -31,7 +32,7 @@ export class MapPage {
             };
 
             // Get user's position
-            Geolocation.getCurrentPosition(locationOptions).then((resp) => {
+            this.geolocation.getCurrentPosition(locationOptions).then((resp) => {
                 let latLng = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
 
                 // Set map parameters

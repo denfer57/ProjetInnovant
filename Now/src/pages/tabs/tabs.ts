@@ -12,7 +12,7 @@ export class TabsPage {
   // should be each tab's root Page
   tab1Root: any = EventsPage;
   tab2Root: any = EventsPage;
-  tab3Root: any = EventsPage;
+  tab3Root: any = MapPage;
   //tab3Root: any = MapPage;
 
   constructor() {

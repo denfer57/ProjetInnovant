@@ -7,15 +7,16 @@ import {EventsPage} from '../pages/events/events';
 import {EventFormPage} from '../pages/event-form/event-form';
 import {SignInPage} from '../pages/sign-in/sign-in';
 import {SignUpPage} from '../pages/sign-up/sign-up';
-//import {MapPage} from '../pages/map/map';
+import {MapPage} from '../pages/map/map';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Geolocation } from '@ionic-native/geolocation'
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    //MapPage,
+    MapPage,
     EventsPage,
     SignInPage,
     SignUpPage,
@@ -28,7 +29,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    //MapPage,
+    MapPage,
     HomePage,
     EventsPage,
     SignInPage,
@@ -39,6 +40,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   providers: [
     StatusBar,
     SplashScreen,
+    Geolocation,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
