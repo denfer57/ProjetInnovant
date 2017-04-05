@@ -17,7 +17,6 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
-      statusBar.backgroundColorByHexString("#303030");
       splashScreen.hide();
       statusBar.styleLightContent();
       if(window.localStorage.getItem('token') == null) {
