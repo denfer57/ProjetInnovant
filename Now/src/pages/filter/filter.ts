@@ -1,25 +1,22 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { EventFormPage } from '../event-form/event-form';
-import { FilterPage } from '../filter/filter';
 
 /*
-  Generated class for the Events page.
+  Generated class for the Filter page.
 
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
 @Component({
-  selector: 'page-events',
-  templateUrl: 'events.html'
+  selector: 'page-filter',
+  templateUrl: 'filter.html'
 })
-export class EventsPage {
-  evtfPage = EventFormPage;
-  filtPage = FilterPage;
+export class FilterPage {
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad EventsPage');
+    console.log('ionViewDidLoad FilterPage');
   }
 
 }
