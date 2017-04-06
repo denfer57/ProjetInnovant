@@ -10,6 +10,7 @@ import { SignUpPage } from '../pages/sign-up/sign-up';
 import { MapPage } from '../pages/map/map';
 import { ProfilePage } from '../pages/profile/profile';
 import { FilterPage } from '../pages/filter/filter';
+import { EventProfilPage } from '../pages/event-profil/event-profil';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Geolocation } from '@ionic-native/geolocation'
@@ -24,6 +25,7 @@ import { Geolocation } from '@ionic-native/geolocation'
     SignUpPage,
     EventFormPage,
     ProfilePage,
+    EventProfilPage,
     FilterPage,
     TabsPage
   ],
@@ -40,6 +42,7 @@ import { Geolocation } from '@ionic-native/geolocation'
     SignUpPage,
     EventFormPage,
     ProfilePage,
+    EventProfilPage,
     FilterPage,
     TabsPage
   ],
