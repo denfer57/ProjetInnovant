@@ -72,7 +72,7 @@ class EventsController extends BaseController{
             'description' => $this->params["description"]
         ]);
         $e->save();
-        
+
         echo json_encode(array('token'=>$token,'name'=>$this->params["name"],'categorie'=>$this->params["categorie"], 'description'=>$this->params["description"]));
       }
       else{
@@ -98,6 +98,11 @@ class EventsController extends BaseController{
       /*
       Voir comment les update fonctionne avec Pragma
       */
+    }
+
+    public function getEvents(){
+      $events = Event::forge()->where("city", "=", $this->params['city'])->get_arrays();
+      echo json_encode($events);
     }
 }
 ?>

@@ -53,6 +53,11 @@ $app->group('/api', function() use($app){//HOME PAGE
 		$app->post('/update',function(){
 			(new App\Controllers\EventsController())->update();
 		});
+
+		$app->get('/get',function(){
+			(new App\Controllers\EventsController())->getEvents();
+		});
+
 	});
 });
 
