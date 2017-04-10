@@ -18,7 +18,7 @@
 </ion-header>
 
 
-<ion-content style="background-color: #303030">
+<ion-content style="background-color: #303030" #post_content [innerHtml]="content">
 
   <ion-card style="background-color: #424242">
 
@@ -26,7 +26,7 @@
 
     <ion-card-content [navPush]="evtpPage">
       <ion-card-title color="white">
-        Color run
+        Color run PETER
         <ion-chip color="sport">
           <ion-label>Sport</ion-label>
         </ion-chip>
@@ -57,48 +57,8 @@
         </button>
       </ion-col>
     </ion-row>
-
   </ion-card>
 
-  <ion-card style="background-color: #424242">
-
-    <img src="img/97182769.jpg"/>
-
-    <ion-card-content>
-      <ion-card-title color="white">
-        Free concert
-        <ion-chip color="music">
-          <ion-label>Music</ion-label>
-        </ion-chip>
-      </ion-card-title>
-      <p color="grey">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut accumsan lacus. Nullam laoreet faucibus
-        urna ut semper. Nullam ut urna sed.
-      </p>
-    </ion-card-content>
-
-    <ion-row no-padding>
-      <ion-col>
-        <button ion-button clear small color="secondary" icon-left>
-          <img src="img/ic_check_circle_black_24px.svg" style="height: 24px; width: 24px;"/>
-          Checked
-        </button>
-      </ion-col>
-      <ion-col text-center>
-        <button ion-button clear small color="primary" icon-left>
-          <img src="img/ic_directions_walk_black_24px.svg" style="height: 24px; width: 24px;"/>
-          I Go
-        </button>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button clear small color="danger" icon-left>
-          <img src="img/ic_cancel_black_24px.svg" style="height: 24px; width: 24px;"/>
-          Ended
-        </button>
-      </ion-col>
-    </ion-row>
-
-  </ion-card>
 
   <ion-fab right bottom>
     <button ion-fab color="light" [navPush]="evtfPage">
