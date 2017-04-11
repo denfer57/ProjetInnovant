@@ -1,6 +1,6 @@
 <?php
 header('Access-Control-Allow-Origin: *');
-$target_path = "uploads/";
+$target_path = "../../../Now/www/img/uploads/";
  
 $target_path = $target_path . basename( $_FILES['file']['name']);
  

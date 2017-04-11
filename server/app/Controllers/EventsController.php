@@ -13,7 +13,7 @@ class EventsController extends BaseController{
       $img = "";
       $token = $this->params["token"];
       $u = User::forge()->where("token", "=", $token)->first();
-
+      //Si l'utilisateur n'a pas mis de photo, on en met une par défaut
       if(empty($this->params['img'])){
         $img = 'Party_Dream_Color_party.jpg';
       }
@@ -21,14 +21,26 @@ class EventsController extends BaseController{
       {
         $img = $this->params['img'];
       }
+
+      //Si la ville n'a pas été trouvée, on l'a met a undefined
+      if(empty($this->params['city'])){
+        $city = 'undefined';
+      }
+      else 
+      {
+        $city = $this->params["city"];
+      }
+
       if(empty($this->params['name'])){
         $erreur.= "Please enter a name for your event. <br>";
         $eventOK=false;
       }
+
       if(empty($this->params['categorie'])){
         $erreur.="Please select a categorie for your event. <br>";
         $eventOK=false;
       }
+
       if(empty($this->params['description'])){
         $erreur.="Please enter a description for your event. <br>";
         $eventOK=false;
@@ -36,6 +48,7 @@ class EventsController extends BaseController{
 
       if ($eventOK) {
         $e = Event::build([
+            'city' => $city,
             'picture' => $img,
             'latitude' => $this->params["latitude"],
             'longitude' => $this->params["longitude"],
