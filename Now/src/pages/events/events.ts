@@ -7,11 +7,11 @@ import {Http} from '@angular/http';
 import { Geolocation } from '@ionic-native/geolocation';
 
 /*
-  Generated class for the Events page.
+ Generated class for the Events page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
+ See http://ionicframework.com/docs/v2/components/#navigation for more info on
+ Ionic pages and navigation.
+ */
 
 var latitude, longitude;
 
@@ -30,92 +30,58 @@ export class EventsPage {
     this.geolocation = geolocation;
     //this.recupererLatLng();
     this.getEvents();
-    this.ajouterHtml("test");
+
+    //this.ajouterHtml("test");
     //console.log("ville :  "+this.city);
 
   }
 
   ajouterHtml(v){
-    this.content=v;
+    console.log(document.getElementById("card-0"));
+    document.getElementById("card-0").style.display="block";
+    //this.content=v;
   }
-  
+
   creerHtml(events){
-  var html='';
+    //var html='';
     for (var i = 0; i <= events.length-1; i++) {
-                    console.log(i);
-                    console.log(events[i]['name']+" rrr");
-
-                    html +='<ion-card style="background-color: #424242">'+
-
-                      '<img src="img/Party_Dream_Color_party.jpg" [navPush]="evtpPage">'+
-
-                      '<ion-card-content [navPush]="evtpPage">'+
-                      '<ion-card-title color="white">'+
-                      events[i]["name"]+
-                      '<ion-chip color="'+events[i]["categorie"]+'">'+
-                      '<ion-label>'+events[i]["categorie"]+'</ion-label>'+
-                      '</ion-chip>'+
-                      '</ion-card-title>'+
-                      '<p color="grey">'+
-                      events[i]["description"]+
-                      '</p>'+
-                      '</ion-card-content>'+
-
-                      ' <ion-row no-padding>'+
-                      ' <ion-col>'+
-                      '<button ion-button clear small color="secondary" icon-left>'+
-                      '<img src="img/ic_check_circle_black_24px.svg" style="height: 24px; width: 24px;"/>'+
-                      'Checked'+
-                      '</button>'+
-                      '</ion-col>'+
-                      '<ion-col text-center>'+
-                      '<button ion-button clear small color="primary" icon-left>'+
-                      '<img src="img/ic_directions_walk_black_24px.svg" style="height: 24px; width: 24px;"/>'+
-                      'I Go'+
-                      '</button>'+
-                      '</ion-col>'+
-                      '<ion-col text-right>'+
-                      '<button ion-button clear small color="danger" icon-left>'+
-                      '<img src="img/ic_cancel_black_24px.svg" style="height: 24px; width: 24px;"/>'+
-                      'Ended'+
-                      '</button>'+
-                      '</ion-col>'+
-                      '</ion-row>'+
-                      '</ion-card>';
-
-                  }
-                  this.ajouterHtml(html);
+    document.getElementById("title-"+i).innerHTML=events[i]["name"];
+    document.getElementById("p-"+i).innerHTML=events[i]["description"];
+    //document.getElementById("categ-"+i).innerHTML=events[i]["categorie"];
+    document.getElementById("card-"+i).style.display="block";
+    }
+    //this.ajouterHtml(html);
   }
-  
+
   getEventsCity(c){
     var link2 = "http://ionicserver:8888/api/events/get";
-    
-     this.http.get(link2 + "?city=" + c).map(res => {
-          return res.json();
-        }).subscribe(data => {
-            this.creerHtml(data);
+
+    this.http.get(link2 + "?city=" + c).map(res => {
+      return res.json();
+    }).subscribe(data => {
+      this.creerHtml(data);
 
 
-            });
-         
-   
+    });
+
+
   }
-  
+
   getCity(lat,long){
-  var link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long;
-  this.http.get(link).map(res => {
-          return res.json();
-        }).subscribe(data => {
-            data.results[0].address_components.map((item) => {
-              if (item.types[0] === "locality") {
-                this.city = item.long_name;
-                this.getEventsCity(this.city);
-              }
+    var link = "https://maps.googleapis.com/maps/api/geocode/json?latlng=" + lat + "," + long;
+    this.http.get(link).map(res => {
+      return res.json();
+    }).subscribe(data => {
+      data.results[0].address_components.map((item) => {
+        if (item.types[0] === "locality") {
+          this.city = item.long_name;
+          this.getEventsCity(this.city);
+        }
 
 
 
-            });
-          });
+      });
+    });
   }
 
   ionViewDidLoad() {
@@ -135,7 +101,7 @@ export class EventsPage {
       latitude = resp.coords.latitude;
       longitude = resp.coords.longitude;
       this.getCity(latitude,longitude);
-      
+
 
     }).catch((error) => {
       console.log('Error getting location', error);
