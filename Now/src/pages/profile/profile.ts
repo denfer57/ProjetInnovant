@@ -13,7 +13,27 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  segment: string="Posted";
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    function getStyle() {
+      var temp = document.getElementById("posted_list").style.display;
+      return temp;
+    }
+
+    function switch01() {
+      var current = getStyle();
+      if (current == "none") {
+        document.getElementById("cont").style.display = "block";
+      }
+      else {
+        document.getElementById("cont").style.display = "none";
+      }
+    }​
+
+
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');

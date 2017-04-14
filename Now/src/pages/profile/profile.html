@@ -13,14 +13,69 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content style="background-color: #303030;">
 
-  <ion-item>
-    <ion-avatar item-left>
-      <img src="img/marty-avatar.png">
-    </ion-avatar>
-    <h2>Marty McFly</h2>
-    <p>November 5, 1955</p>
-  </ion-item>
+  <ion-row class="caption" style="background-color: #424242;">
+    <ion-col>
+      <ion-avatar align-items-center>
+        <img src="img/profile_img.png" style="height: 30%; width: 30%; border-radius: 50%" class="caption">
+      </ion-avatar>
+      <h2>Maxime Mojito</h2>
+      <p color="grey" padding-left padding-right style="text-align: center;">Urna ut semper.Urna ut semper.Urna ut semper.Urna ut semper.Urna ut semper.Urna ut semper. </p>
+      <button ion-button block small color="primary" icon-left style="height: 40px; width: 50%;" class="caption">UPDATE PROFILE</button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-segment padding [(ngModel)]="segment" id="which_list">
+      <ion-segment-button value="Posted">
+        Posted
+      </ion-segment-button>
+      <ion-segment-button value="Participated">
+        Participated
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+
+  <ion-row id="posted_list">
+    <ion-card style="background-color: #424242">
+      <img src="img/97182769.jpg"/>
+
+      <ion-card-content>
+        <ion-card-title color="white">
+          Free concert
+          <ion-chip color="music">
+            <ion-label>Music</ion-label>
+          </ion-chip>
+        </ion-card-title>
+        <p color="grey">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut accumsan lacus. Nullam laoreet faucibus
+          urna ut semper. Nullam ut urna sed.
+        </p>
+      </ion-card-content>
+
+    </ion-card>
+  </ion-row>
+
+  <ion-row id="participed_list">
+    <ion-card style="background-color: #424242">
+
+      <img src="img/Party_Dream_Color_party.jpg" [navPush]="evtpPage">
+
+      <ion-card-content [navPush]="evtpPage">
+        <ion-card-title color="white">
+          Color run
+          <ion-chip color="sport">
+            <ion-label>Sport</ion-label>
+          </ion-chip>
+        </ion-card-title>
+        <p color="grey">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut accumsan lacus. Nullam laoreet faucibus
+          urna ut semper. Nullam ut urna sed.
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+  </ion-row>
 
 </ion-content>
