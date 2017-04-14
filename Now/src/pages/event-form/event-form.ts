@@ -5,12 +5,13 @@ import { ToastController } from 'ionic-angular';
 import { Geolocation } from 'ionic-native';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/transfer';
+import { EventsPage } from '../events/events';
 
 var img;
 // A changer selon l'IP pour le téléphone
 //192.168.43.215 ou
 //ionicserver
-var IP = '192.168.43.215';
+var IP = 'ionicserver';
 /*
   Generated class for the EventForm page.
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
@@ -128,6 +129,7 @@ export class EventFormPage {
   }
 
   public submit(){
+	var _this = this;
 	var token = window.localStorage.getItem('token');
     var link = 'http://'+IP+':8888/api/events';
 
@@ -135,6 +137,7 @@ export class EventFormPage {
       if(JSON.parse(res["_body"]).erreur==null){
         console.log("pas d'erreur");
         document.getElementById("rep").innerHTML="The event "+JSON.parse(res["_body"]).name+" has been registered";
+		_this.navCtrl.setRoot(EventsPage);
       }else{
         console.log(JSON.parse(res["_body"]).erreur);
         document.getElementById("rep").innerHTML=JSON.parse(res["_body"]).erreur;
