@@ -15,7 +15,6 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 var latitude, longitude;
 
-
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html'
@@ -47,7 +46,9 @@ export class EventsPage {
     for (var i = 0; i <= events.length-1; i++) {
     document.getElementById("title-"+i).innerHTML=events[i]["name"];
     document.getElementById("p-"+i).innerHTML=events[i]["description"];
-    //document.getElementById("categ-"+i).innerHTML=events[i]["categorie"];
+	//console.log(events[i]["categorie"]);
+    //(<HTMLLabelElement>document.getElementById("categ-"+i)).htmlFor=events[i]["categorie"];
+	(<HTMLImageElement>document.getElementById("img-"+i)).src = "http://localhost/ProjetInnovant/Now/www/img/uploads/"+events[i]["picture"];
     document.getElementById("card-"+i).style.display="block";
     }
     //this.ajouterHtml(html);
