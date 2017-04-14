@@ -102,6 +102,11 @@ class UsersController extends BaseController{
     }
   }
 
+  public function getUser(){
+    $u=User::find($this->params['id'])->first();
+    echo json_encode(array('user' => $u->username));
+  }
+
   /*
   public function delete(){
     Récupérer le token ?

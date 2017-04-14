@@ -39,6 +39,10 @@ $app->group('/api', function() use($app){//HOME PAGE
 			(new App\Controllers\UsersController())->login();
 		});
 
+		$app->get('/get',function(){
+			(new App\Controllers\UsersController())->getUser();
+		});
+
 	});
 	$app->group('/events', function() use ($app){
 		$app->post('', function(){
