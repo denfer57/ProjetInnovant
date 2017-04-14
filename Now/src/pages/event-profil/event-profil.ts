@@ -14,7 +14,17 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class EventProfilPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public name: any;
+  public categorie: any;
+  public description: any;
+  public address: any;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.name = this.navParams.get('name');
+    this.categorie = this.navParams.get('categorie');
+    this.description = this.navParams.get('description');
+    this.address = this.navParams.get('address');
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EventProfilPage');

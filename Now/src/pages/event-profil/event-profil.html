@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Color Run</ion-title>
+    <ion-title>{{name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -39,11 +39,11 @@
       </ion-col>
 
       <ion-card-title color="white" text-center no-padding class="event_name">
-        Color run
+        {{name}}
         <ion-row>
           <ion-col>
             <ion-chip color="sport" margin-bottom>
-              <ion-label>Sport</ion-label>
+              <ion-label>{{categorie}}</ion-label>
             </ion-chip>
           </ion-col>
         </ion-row>
@@ -61,12 +61,10 @@
     <ion-row>
       <ion-col>
         <p color="grey">
-          16 rue de Santifontaine
+          {{address}}
         </p>
         <p color="white">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras ut accumsan lacus. Nullam laoreet
-          faucibus
-          urna ut semper. Nullam ut urna sed.
+          {{description}}
         </p>
       </ion-col>
     </ion-row>

@@ -18,15 +18,15 @@ export class MapPage {
     this.platform = platform;
     this.geolocation = geolocation;
     this.navCtrl = navCtrl;
-    this.details();
+    //this.details();
     this.initializeMap();
   }
 
-  public details() {
+  /*public details() {
 
     this.navCtrl.push(EventProfilPage);
 
-  }
+  }*/
 
   public afficherEvents(c,map){
     var link2 = "http://ionicserver:8888/api/events/get";
@@ -42,10 +42,10 @@ export class MapPage {
 
       for (var i = 0; i <= events.length - 1; i++) {
         console.log(nav);
-        infoContent[i] = '<div style="color: #000000;">' +
+        /*infoContent[i] = '<div style="color: #000000;">' +
           '<h3>'+ events[i]["name"]+'</h3> <p>'+events[i]["description"]+'</p>' +
           '<button ion-button block onclick="details();">More</button>' +
-          '</div>';
+          '</div>';*/
 
         var position = new google.maps.LatLng(events[i]["latitude"], events[i]["longitude"]);
         marker = new google.maps.Marker({
@@ -55,7 +55,12 @@ export class MapPage {
         });
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
-            nav.push(EventProfilPage);
+            nav.push(EventProfilPage, {
+              name: events[i]["name"],
+              categorie: events[i]["categorie"],
+              description: events[i]["description"],
+              address: events[i]["address"]
+            });
             //infoWindow.setContent(infoContent[i]);
             //infoWindow.open(map, marker);
           }
@@ -115,13 +120,11 @@ export class MapPage {
         // Creation and display map
         map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
+        var icon = "img/man-walking-directions-button.png"
         // Set marker parameters
         let markerOptions = {
           position: map.getCenter(),
-          icon: new google.maps.MarkerImage('//maps.gstatic.com/mapfiles/mobile/mobileimgs2.png',
-            new google.maps.Size(22, 22),
-            new google.maps.Point(0, 18),
-            new google.maps.Point(11, 11)),
+          icon: icon,
           map: map
 
         };
