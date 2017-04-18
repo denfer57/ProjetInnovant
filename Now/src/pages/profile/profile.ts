@@ -45,6 +45,15 @@ export class ProfilePage {
     var link = 'http://ionicserver:8888/api/users/logoff?token='+ window.localStorage.getItem('token') ;
     this.http.get(link);
     window.localStorage.setItem('token',null);
+    //console.log(document.getElementsByClassName("tabbar show-tabbar"));
+    //document.getElementsByClassName("tabbar show-tabbar").style.display="none";
+    //console.log(
+    // );
+    //document.getElementById("tabs").style.display="none";
+
+    document.getElementById("tab-t0-0").style.display="none";
+    document.getElementById("tab-t0-1").style.display="none";
+    document.getElementById("tab-t0-2").style.display="none";
     this.navCtrl.setRoot(HomePage);
   }
 
