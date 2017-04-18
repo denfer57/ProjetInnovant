@@ -39,6 +39,10 @@ $app->group('/api', function() use($app){//HOME PAGE
 			(new App\Controllers\UsersController())->login();
 		});
 
+		$app->post('/logoff',function(){
+			(new App\Controllers\UsersController())->logoff();
+		});
+
 		$app->get('/get',function(){
 			(new App\Controllers\UsersController())->getUser();
 		});

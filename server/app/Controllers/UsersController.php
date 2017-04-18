@@ -107,13 +107,14 @@ class UsersController extends BaseController{
     echo json_encode(array('user' => $u->username));
   }
 
-  /*
-  public function delete(){
-    Récupérer le token ?
-    $token = "58dabf6db7c0e";
-    $u = User::forge()->where("token", "=", $token)->first();
-    $u->delete();
+
+  public function logoff(){
+    //Récupérer le token ?
+    //$token = "58dabf6db7c0e";
+    $u = User::forge()->where("token", "=", $this->params['token'])->first();
+    $u->token="";
+    $u->save();
   }
-  */
+
 }
 ?>
