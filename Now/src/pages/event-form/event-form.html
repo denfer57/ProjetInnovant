@@ -42,13 +42,6 @@
         <ion-textarea placeholder="Enter a description" color="grey" name="description" [(ngModel)]="data.description" id="desc" maxlength="140"></ion-textarea>
       </ion-item>
 
-      <!--<ion-item class="eventPicture" style="background-color: #303030">
-          <label for="upload" class="eventPic">Select your picture :</label>
-      </ion-item>
-      <ion-item style="background-color: #303030">
-        <input type="file" accept="image/*" (click)="upload()"/>
-		<input type="file" accept="image/*" (click)="upload()"/>
-      </ion-item>-->
 	  <ion-item style="background-color: #303030">
 		<button ion-button (click)="upload()" ion-button >Select your picture</button>
 	  </ion-item>
@@ -59,7 +52,6 @@
 
   <button ion-button block type="submit" name="submit" (click)="submit()">Create</button>
 
-<!--<img [src]="base64Image" *ngIf="base64Image" />-->
   </form>
   
   <span id="rep"></span>

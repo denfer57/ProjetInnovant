@@ -67,23 +67,11 @@ class EventsController extends BaseController{
     }
 
     public function delete(){
-      /*
-      Voir pourquoi le delete marche pas, à cause de l'user_id ?
-      $token = "58dabf6db7c0e";
-      $u = User::forge()->where("token", "=", $token)->first();
-      $e = Event::forge()->where("user_id", "=", $u->id)->all();
-      $e->delete();
-      */
-    }
-
-    public function load(){
-      //$e = Event::forge()->select();
+      
     }
 
     public function update(){
-      /*
-      Voir comment les update fonctionne avec Pragma
-      */
+      
     }
 
     public function getEvents(){

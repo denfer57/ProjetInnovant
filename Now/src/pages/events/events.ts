@@ -15,7 +15,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 
 var latitude, longitude;
 //ionicserver
-var IP = "ionicserver";
+//192.168.43.215
+var IP = "192.168.43.215";
 @Component({
   selector: 'page-events',
   templateUrl: 'events.html'
@@ -28,18 +29,13 @@ export class EventsPage {
   city: "";
   constructor(public navCtrl: NavController, public navParams: NavParams, private http: Http,private geolocation: Geolocation) {
     this.geolocation = geolocation;
-    //this.recupererLatLng();
     this.getEvents();
-
-    //this.ajouterHtml("test");
-    //console.log("ville :  "+this.city);
 
   }
 
   ajouterHtml(v){
     console.log(document.getElementById("card-0"));
     document.getElementById("card-0").style.display="block";
-    //this.content=v;
   }
 
   creerHtml(events){
@@ -47,12 +43,9 @@ export class EventsPage {
     for (var i = 0; i <= events.length-1; i++) {
     document.getElementById("title-"+i).innerHTML=events[i]["name"];
     document.getElementById("p-"+i).innerHTML=events[i]["description"];
-	//console.log(events[i]["categorie"]);
-    //(<HTMLLabelElement>document.getElementById("categ-"+i)).htmlFor=events[i]["categorie"];
 	(<HTMLImageElement>document.getElementById("img-"+i)).src = "http://"+IP+"/ProjetInnovant/Now/www/img/uploads/"+events[i]["picture"];
     document.getElementById("card-"+i).style.display="block";
     }
-    //this.ajouterHtml(html);
   }
 
   getEventsCity(c){

@@ -57,7 +57,7 @@ class UsersController extends BaseController{
             'salt' => $salt,
             'email' => $this->params["email"],
             'token' => $token
-            ]);
+           ]);
           $u->save();
           echo json_encode(array('token'=>$token,'username'=>$this->params["username"],'email'=>$this->params["email"]));
 
@@ -72,27 +72,14 @@ class UsersController extends BaseController{
 
     public function login(){
       if(!empty($this->params['username']) && !empty($this->params['password'])){
-        //var_dump($this->params);
         $u = User::forge()->where("username", "=", $this->params['username'])->first();
 
         if(isset($u)){
-          //echo $u->toJSON();
           $pwd = hash('sha256', $this->params["password"].$u->salt);
           if($u->password == $pwd){
-            //echo json_encode("id valide");
-            //echo $u->toJSON();
-            //update le token dans la BDD
-            //$token = uniqid();
-            /*Remodifier le token BDD
-            $u->save();
-            */
-            //echo json_encode($token);
             echo json_encode(array('username'=>$this->params['username'],'token'=>$u->token));
-            //echo array("username"=>$this->params['username'],"token"=>$token)->toJSON();
           }else{
             echo json_encode(array('erreur' =>'The login credentials are invalid.'));
-            //echo json_encode(array('erreur' =>$pwd));
-            //echo "test";
           }
         }else{
           echo json_encode(array('erreur' =>'The login credentials are invalid.'));
@@ -109,9 +96,10 @@ class UsersController extends BaseController{
 
 
   public function logoff(){
-    //Récupérer le token ?
-    //$token = "58dabf6db7c0e";
     $u = User::forge()->where("token", "=", $this->params['token'])->first();
+    /*$u = User::build([
+    	'token' => $this->params["token"]
+    )];*/
     $u->token="";
     $u->save();
   }

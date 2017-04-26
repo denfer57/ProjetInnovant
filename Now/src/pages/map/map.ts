@@ -6,7 +6,8 @@ import 'rxjs/add/operator/map';
 import { EventProfilPage } from '../event-profil/event-profil';
 
 declare var google;
-
+var IP = "192.168.43.215";
+//ionicserver
 @Component({
   selector: 'map',
   templateUrl: 'map.html'
@@ -18,22 +19,15 @@ export class MapPage {
     this.platform = platform;
     this.geolocation = geolocation;
     this.navCtrl = navCtrl;
-    //this.details();
     this.initializeMap();
   }
 
-  /*public details() {
-
-    this.navCtrl.push(EventProfilPage);
-
-  }*/
 
   public afficherEvents(c,map){
-    var link2 = "http://ionicserver:8888/api/events/get";
+    var link2 = "http://"+IP+":8888/api/events/get";
     var events;
     var nav = this.navCtrl;
     this.http.get(link2 + "?city=" + c).subscribe(function(res) {
-      //console.log(nav);
       events = JSON.parse(res["_body"]);
       var marker;
       var infoContent=[];
@@ -42,10 +36,6 @@ export class MapPage {
 
       for (var i = 0; i <= events.length - 1; i++) {
         console.log(nav);
-        /*infoContent[i] = '<div style="color: #000000;">' +
-          '<h3>'+ events[i]["name"]+'</h3> <p>'+events[i]["description"]+'</p>' +
-          '<button ion-button block onclick="details();">More</button>' +
-          '</div>';*/
 
         var position = new google.maps.LatLng(events[i]["latitude"], events[i]["longitude"]);
         marker = new google.maps.Marker({
@@ -61,8 +51,6 @@ export class MapPage {
               description: events[i]["description"],
               address: events[i]["address"]
             });
-            //infoWindow.setContent(infoContent[i]);
-            //infoWindow.open(map, marker);
           }
         })(marker, i));
 

@@ -8,10 +8,10 @@ import { Transfer, FileUploadOptions, TransferObject } from '@ionic-native/trans
 import { EventsPage } from '../events/events';
 
 var img;
-// A changer selon l'IP pour le téléphone
+// A changer selon l'IP du téléphone
 //192.168.43.215 ou
 //ionicserver
-var IP = 'ionicserver';
+var IP = '192.168.43.215';
 /*
   Generated class for the EventForm page.
   See http://ionicframework.com/docs/v2/components/#navigation for more info on

@@ -8,6 +8,8 @@ import {Http, Response} from '@angular/http';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+var IP = "192.168.43.215";
+//ionicserver
 @Component({
   selector: 'page-event-profil',
   templateUrl: 'event-profil.html'
@@ -31,9 +33,8 @@ export class EventProfilPage {
   }
 
   getUser(v){
-    this.http.get("http://ionicserver:8888/api/users/get?id="+ v).subscribe(function(res) {
+    this.http.get("http://"+IP+":8888/api/users/get?id="+ v).subscribe(function(res) {
       document.getElementById("user").innerHTML=JSON.parse(res["_body"]).user;
-      //console.log(document.getElementById("user"));
 
     });
   }

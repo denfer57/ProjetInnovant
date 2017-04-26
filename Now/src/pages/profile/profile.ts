@@ -9,6 +9,8 @@ import { HomePage } from '../home/home';
   See http://ionicframework.com/docs/v2/components/#navigation for more info on
   Ionic pages and navigation.
 */
+var IP = "192.168.43.215";
+//ionicserver
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html'
@@ -42,19 +44,13 @@ export class ProfilePage {
   }
 
   logout(){
-    var link = 'http://ionicserver:8888/api/users/logoff?token='+ window.localStorage.getItem('token') ;
+    var link = 'http://'+IP+':8888/api/users/logoff?token='+ window.localStorage.getItem('token') ;
     this.http.get(link);
-    window.localStorage.setItem('token',null);
-    //console.log(document.getElementsByClassName("tabbar show-tabbar"));
-    //document.getElementsByClassName("tabbar show-tabbar").style.display="none";
-    //console.log(
-    // );
-    //document.getElementById("tabs").style.display="none";
-
-    document.getElementById("tab-t0-0").style.display="none";
+	document.getElementById("tab-t0-0").style.display="none";
     document.getElementById("tab-t0-1").style.display="none";
     document.getElementById("tab-t0-2").style.display="none";
-    this.navCtrl.setRoot(HomePage);
+	this.navCtrl.setRoot(HomePage);
+	window.localStorage.clear();   
   }
 
 }
